@@ -63,6 +63,26 @@ const BandwidthPage = lazy(() => import('@/pages/ittools/BandwidthPage'))
 const CLIReferencePage = lazy(() => import('@/pages/ittools/CLIReferencePage'))
 const PasswordGeneratorPage = lazy(() => import('@/pages/ittools/PasswordGeneratorPage'))
 
+// Math
+const QuadraticPage = lazy(() => import('@/pages/math/QuadraticPage'))
+const FractionsPage = lazy(() => import('@/pages/math/FractionsPage'))
+const GcfLcmPage = lazy(() => import('@/pages/math/GcfLcmPage'))
+const StatisticsPage = lazy(() => import('@/pages/math/StatisticsPage'))
+const PythagoreanPage = lazy(() => import('@/pages/math/PythagoreanPage'))
+
+// Science
+const OhmsLawPage = lazy(() => import('@/pages/science/OhmsLawPage'))
+const SpeedDistanceTimePage = lazy(() => import('@/pages/science/SpeedDistanceTimePage'))
+const ForceMotionPage = lazy(() => import('@/pages/science/ForceMotionPage'))
+const DensityPage = lazy(() => import('@/pages/science/DensityPage'))
+const IdealGasPage = lazy(() => import('@/pages/science/IdealGasPage'))
+
+// Graphs
+const FunctionPlotterPage = lazy(() => import('@/pages/graphs/FunctionPlotterPage'))
+const LinearGraphPage = lazy(() => import('@/pages/graphs/LinearGraphPage'))
+const QuadraticGraphPage = lazy(() => import('@/pages/graphs/QuadraticGraphPage'))
+const TrigGraphPage = lazy(() => import('@/pages/graphs/TrigGraphPage'))
+
 function LoadingSpinner() {
   return (
     <div className="flex items-center justify-center min-h-[40vh]">
@@ -136,6 +156,26 @@ export default function AppRoutes() {
             <Route path="/ittools/bandwidth" element={<BandwidthPage />} />
             <Route path="/ittools/cli-reference" element={<CLIReferencePage />} />
             <Route path="/ittools/password-generator" element={<PasswordGeneratorPage />} />
+
+            {/* Math */}
+            <Route path="/math/quadratic" element={<QuadraticPage />} />
+            <Route path="/math/fractions" element={<FractionsPage />} />
+            <Route path="/math/gcf-lcm" element={<GcfLcmPage />} />
+            <Route path="/math/statistics" element={<StatisticsPage />} />
+            <Route path="/math/pythagorean" element={<PythagoreanPage />} />
+
+            {/* Science */}
+            <Route path="/science/ohms-law" element={<OhmsLawPage />} />
+            <Route path="/science/speed-distance-time" element={<SpeedDistanceTimePage />} />
+            <Route path="/science/force-motion" element={<ForceMotionPage />} />
+            <Route path="/science/density" element={<DensityPage />} />
+            <Route path="/science/ideal-gas" element={<IdealGasPage />} />
+
+            {/* Graphs */}
+            <Route path="/graphs/function-plotter" element={<FunctionPlotterPage />} />
+            <Route path="/graphs/linear-graph" element={<LinearGraphPage />} />
+            <Route path="/graphs/quadratic-graph" element={<QuadraticGraphPage />} />
+            <Route path="/graphs/trig-graph" element={<TrigGraphPage />} />
 
             <Route path="*" element={<NotFoundPage />} />
           </Route>

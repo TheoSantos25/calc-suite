@@ -12,6 +12,9 @@ const gradientMap: Record<string, string> = {
   rose: 'from-rose-500 to-rose-600',
   indigo: 'from-indigo-500 to-indigo-600',
   amber: 'from-amber-500 to-amber-600',
+  pink: 'from-pink-500 to-pink-600',
+  teal: 'from-teal-500 to-teal-600',
+  sky: 'from-sky-500 to-sky-600',
 }
 
 interface CalculatorShellProps {

@@ -145,6 +145,50 @@ export const categories: CategoryMeta[] = [
       { id: 'password-generator', name: 'Password Generator', description: 'Generate secure passwords with strength analysis', path: 'password-generator' },
     ],
   },
+  {
+    id: 'math',
+    name: 'Math',
+    description: 'Algebra, fractions, statistics, and geometry solvers',
+    basePath: '/math',
+    icon: 'Sigma',
+    color: 'pink',
+    calculators: [
+      { id: 'quadratic', name: 'Quadratic Solver', description: 'Solve ax² + bx + c = 0 with step-by-step results', path: 'quadratic' },
+      { id: 'fractions', name: 'Fraction Calculator', description: 'Add, subtract, multiply, and divide fractions', path: 'fractions' },
+      { id: 'gcf-lcm', name: 'GCF & LCM', description: 'Find greatest common factor and least common multiple', path: 'gcf-lcm' },
+      { id: 'statistics', name: 'Statistics Calculator', description: 'Mean, median, mode, range, and standard deviation', path: 'statistics' },
+      { id: 'pythagorean', name: 'Pythagorean Theorem', description: 'Find the missing side of a right triangle', path: 'pythagorean' },
+    ],
+  },
+  {
+    id: 'science',
+    name: 'Science',
+    description: 'Physics formulas for electricity, motion, density, and gases',
+    basePath: '/science',
+    icon: 'Flask',
+    color: 'teal',
+    calculators: [
+      { id: 'ohms-law', name: "Ohm's Law", description: 'Calculate voltage, current, resistance, and power', path: 'ohms-law' },
+      { id: 'speed-distance-time', name: 'Speed / Distance / Time', description: 'Solve for speed, distance, or time', path: 'speed-distance-time' },
+      { id: 'force-motion', name: 'Force & Motion', description: 'Calculate force, mass, acceleration, work, and kinetic energy', path: 'force-motion' },
+      { id: 'density', name: 'Density Calculator', description: 'Calculate density, mass, or volume', path: 'density' },
+      { id: 'ideal-gas', name: 'Ideal Gas Law', description: 'Solve PV = nRT for any variable', path: 'ideal-gas' },
+    ],
+  },
+  {
+    id: 'graphs',
+    name: 'Graphs',
+    description: 'Plot and visualize linear, quadratic, trigonometric, and custom functions',
+    basePath: '/graphs',
+    icon: 'LineChart',
+    color: 'sky',
+    calculators: [
+      { id: 'function-plotter', name: 'Function Plotter', description: 'Plot any math function with zoom and pan', path: 'function-plotter' },
+      { id: 'linear-graph', name: 'Linear Grapher', description: 'Graph y = mx + b with slope and intercept controls', path: 'linear-graph' },
+      { id: 'quadratic-graph', name: 'Quadratic Grapher', description: 'Visualize parabolas with vertex and roots', path: 'quadratic-graph' },
+      { id: 'trig-graph', name: 'Trig Grapher', description: 'Plot sine, cosine, and tangent with amplitude and frequency', path: 'trig-graph' },
+    ],
+  },
 ]
 
 export function getCategoryById(id: string) {

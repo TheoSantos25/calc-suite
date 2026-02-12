@@ -10,6 +10,9 @@ const tabs = [
   { id: 'common', label: 'Tools', icon: '\u{1F527}' },
   { id: 'aitech', label: 'AI', icon: '\u{2728}' },
   { id: 'ittools', label: 'IT', icon: '\u{1F4BB}' },
+  { id: 'math', label: 'Math', icon: '\u{1F522}' },
+  { id: 'science', label: 'Science', icon: '\u{1F52C}' },
+  { id: 'graphs', label: 'Graphs', icon: '\u{1F4C9}' },
 ]
 
 export function MobileNav() {

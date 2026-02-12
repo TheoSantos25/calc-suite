@@ -12,6 +12,9 @@ const colorMap: Record<string, { gradient: string; border: string; badge: string
   rose: { gradient: 'from-rose-500 to-rose-600', border: 'border-l-rose-500', badge: 'bg-rose-500/10 text-rose-600 dark:text-rose-400', glow: 'shadow-rose-500/20' },
   indigo: { gradient: 'from-indigo-500 to-indigo-600', border: 'border-l-indigo-500', badge: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400', glow: 'shadow-indigo-500/20' },
   amber: { gradient: 'from-amber-500 to-amber-600', border: 'border-l-amber-500', badge: 'bg-amber-500/10 text-amber-600 dark:text-amber-400', glow: 'shadow-amber-500/20' },
+  pink: { gradient: 'from-pink-500 to-pink-600', border: 'border-l-pink-500', badge: 'bg-pink-500/10 text-pink-600 dark:text-pink-400', glow: 'shadow-pink-500/20' },
+  teal: { gradient: 'from-teal-500 to-teal-600', border: 'border-l-teal-500', badge: 'bg-teal-500/10 text-teal-600 dark:text-teal-400', glow: 'shadow-teal-500/20' },
+  sky: { gradient: 'from-sky-500 to-sky-600', border: 'border-l-sky-500', badge: 'bg-sky-500/10 text-sky-600 dark:text-sky-400', glow: 'shadow-sky-500/20' },
 }
 
 const iconMap: Record<string, string> = {
@@ -24,6 +27,9 @@ const iconMap: Record<string, string> = {
   Calculator: '\u{1F9EE}',
   Sparkles: '\u{2728}',
   Terminal: '\u{1F4BB}',
+  Sigma: '\u{1F522}',
+  Flask: '\u{1F52C}',
+  LineChart: '\u{1F4C9}',
 }
 
 export default function HomePage() {

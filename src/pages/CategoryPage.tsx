@@ -11,6 +11,9 @@ const colorMap: Record<string, { gradient: string; border: string; badge: string
   rose: { gradient: 'from-rose-500 to-rose-600', border: 'border-l-rose-500', badge: 'bg-rose-500/15 text-rose-500 dark:text-rose-400', iconBg: 'bg-rose-500' },
   indigo: { gradient: 'from-indigo-500 to-indigo-600', border: 'border-l-indigo-500', badge: 'bg-indigo-500/15 text-indigo-500 dark:text-indigo-400', iconBg: 'bg-indigo-500' },
   amber: { gradient: 'from-amber-500 to-amber-600', border: 'border-l-amber-500', badge: 'bg-amber-500/15 text-amber-500 dark:text-amber-400', iconBg: 'bg-amber-500' },
+  pink: { gradient: 'from-pink-500 to-pink-600', border: 'border-l-pink-500', badge: 'bg-pink-500/15 text-pink-500 dark:text-pink-400', iconBg: 'bg-pink-500' },
+  teal: { gradient: 'from-teal-500 to-teal-600', border: 'border-l-teal-500', badge: 'bg-teal-500/15 text-teal-500 dark:text-teal-400', iconBg: 'bg-teal-500' },
+  sky: { gradient: 'from-sky-500 to-sky-600', border: 'border-l-sky-500', badge: 'bg-sky-500/15 text-sky-500 dark:text-sky-400', iconBg: 'bg-sky-500' },
 }
 
 export default function CategoryPage() {

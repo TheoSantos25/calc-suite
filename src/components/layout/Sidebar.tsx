@@ -12,6 +12,9 @@ const colorMap: Record<string, string> = {
   rose: 'bg-rose-500',
   indigo: 'bg-indigo-500',
   amber: 'bg-amber-500',
+  pink: 'bg-pink-500',
+  teal: 'bg-teal-500',
+  sky: 'bg-sky-500',
 }
 
 export function Sidebar() {

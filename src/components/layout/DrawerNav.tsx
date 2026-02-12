@@ -12,6 +12,9 @@ const colorMap: Record<string, string> = {
   rose: 'bg-rose-500',
   indigo: 'bg-indigo-500',
   amber: 'bg-amber-500',
+  pink: 'bg-pink-500',
+  teal: 'bg-teal-500',
+  sky: 'bg-sky-500',
 }
 
 const iconMap: Record<string, string> = {
@@ -24,6 +27,9 @@ const iconMap: Record<string, string> = {
   common: '\u{1F527}',
   aitech: '\u{2728}',
   ittools: '\u{1F4BB}',
+  math: '\u{1F522}',
+  science: '\u{1F52C}',
+  graphs: '\u{1F4C9}',
 }
 
 interface DrawerNavProps {
