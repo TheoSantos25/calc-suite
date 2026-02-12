@@ -1,15 +1,26 @@
 {
   "name": "calc-suite",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:android": "tsc -b && vite build && npx cap sync android",
+    "cap:open": "npx cap open android",
+    "cap:sync": "npx cap sync android",
+    "cap:run": "npx cap run android",
+    "resources": "node scripts/generate-icons.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@capacitor/android": "^8.0.2",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/browser": "^8.0.0",
+    "@capacitor/core": "^8.0.2",
+    "@capacitor/splash-screen": "^8.0.0",
+    "@capacitor/status-bar": "^8.0.0",
     "@tailwindcss/vite": "^4.1.18",
     "apexcharts": "^5.3.6",
     "react": "^19.2.0",
@@ -19,6 +30,8 @@
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^8.0.2",
     "@eslint/js": "^9.39.1",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",

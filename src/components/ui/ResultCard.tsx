@@ -11,6 +11,18 @@ interface ResultCardProps {
   editPrefix?: string
 }
 
+const colorToAccent: Record<string, string> = {
+  'text-blue-500': 'bg-blue-500',
+  'text-emerald-500': 'bg-emerald-500',
+  'text-orange-500': 'bg-orange-500',
+  'text-rose-500': 'bg-rose-500',
+  'text-purple-500': 'bg-purple-500',
+  'text-cyan-500': 'bg-cyan-500',
+  'text-green-500': 'bg-green-500',
+  'text-amber-500': 'bg-amber-500',
+  'text-indigo-500': 'bg-indigo-500',
+}
+
 export function ResultCard({
   label,
   value,
@@ -23,6 +35,8 @@ export function ResultCard({
   const [isEditing, setIsEditing] = useState(false)
   const [editText, setEditText] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
+
+  const accentColor = colorToAccent[color] || 'bg-primary'
 
   useEffect(() => {
     if (isEditing && inputRef.current) {
@@ -58,13 +72,16 @@ export function ResultCard({
   }
 
   return (
-    <GlassCard className={`p-5${editable ? ' relative' : ''}`} hover>
-      <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
+    <GlassCard className={`relative overflow-hidden p-5${editable ? '' : ''}`} hover>
+      {/* Top accent line */}
+      <div className={`absolute top-0 left-0 right-0 h-1 ${accentColor}`} />
+
+      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
         {label}
       </p>
 
       {editable && !isEditing && (
-        <span className="absolute top-2 right-2 text-slate-400 dark:text-slate-500 text-xs">
+        <span className="absolute top-3 right-3 text-slate-400 dark:text-slate-500 text-xs">
           ✎
         </span>
       )}

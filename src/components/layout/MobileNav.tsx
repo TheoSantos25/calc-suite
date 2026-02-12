@@ -14,7 +14,7 @@ const tabs = [
 
 export function MobileNav() {
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-700/50" aria-label="Category navigation">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-700/50 safe-bottom" aria-label="Category navigation">
       <div className="flex overflow-x-auto no-scrollbar">
         {tabs.map(tab => (
           <NavLink

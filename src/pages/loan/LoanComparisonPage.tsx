@@ -192,25 +192,29 @@ export default function LoanComparisonPage() {
         <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-4">
           Comparison Summary
         </h3>
-        <div className="overflow-auto">
+        <div className="overflow-auto rounded-xl">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-200 dark:border-slate-600">
-                <th className="text-left py-2 px-3 font-medium text-slate-500 dark:text-slate-400">Loan</th>
-                <th className="text-right py-2 px-3 font-medium text-slate-500 dark:text-slate-400">Amount</th>
-                <th className="text-right py-2 px-3 font-medium text-slate-500 dark:text-slate-400">Rate</th>
-                <th className="text-right py-2 px-3 font-medium text-slate-500 dark:text-slate-400">Term</th>
-                <th className="text-right py-2 px-3 font-medium text-slate-500 dark:text-slate-400">Monthly</th>
-                <th className="text-right py-2 px-3 font-medium text-slate-500 dark:text-slate-400">Total Interest</th>
-                <th className="text-right py-2 px-3 font-medium text-slate-500 dark:text-slate-400">Total Cost</th>
+              <tr className="bg-slate-700 dark:bg-slate-900">
+                <th className="text-left py-2 px-3 font-semibold text-white">Loan</th>
+                <th className="text-right py-2 px-3 font-semibold text-white">Amount</th>
+                <th className="text-right py-2 px-3 font-semibold text-white">Rate</th>
+                <th className="text-right py-2 px-3 font-semibold text-white">Term</th>
+                <th className="text-right py-2 px-3 font-semibold text-white">Monthly</th>
+                <th className="text-right py-2 px-3 font-semibold text-white">Total Interest</th>
+                <th className="text-right py-2 px-3 font-semibold text-white">Total Cost</th>
               </tr>
             </thead>
             <tbody>
               {results.map((r, i) => (
                 <tr
                   key={i}
-                  className={`border-b border-slate-100 dark:border-slate-700 ${
-                    i === bestIndex ? 'bg-emerald-50 dark:bg-emerald-900/20' : ''
+                  className={`border-b border-slate-200 dark:border-slate-700/50 ${
+                    i === bestIndex
+                      ? 'bg-emerald-50 dark:bg-emerald-900/20'
+                      : i % 2 === 0
+                        ? 'bg-slate-50 dark:bg-slate-800/50'
+                        : 'bg-white dark:bg-slate-800'
                   }`}
                 >
                   <td className="py-2 px-3 text-slate-900 dark:text-slate-100 font-medium">

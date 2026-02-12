@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { useCapacitor } from '@/hooks/useCapacitor'
 import { CalculatorShell } from '@/components/ui/CalculatorShell'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { SkeletonCard } from '@/components/ui/SkeletonCard'
@@ -21,6 +22,7 @@ const pipelineColors: Record<string, string> = {
 }
 
 export default function AIModelExplorerPage() {
+  const { openExternal } = useCapacitor()
   const { models, loading, error, refetch } = useHuggingFaceModels()
   const [activeFilter, setActiveFilter] = useState('All')
 
@@ -69,7 +71,7 @@ export default function AIModelExplorerPage() {
         title="AI Model Explorer"
         description="Explore trending AI models from Hugging Face"
       >
-        <GlassCard className="p-6 border-l-4 border-rose-500">
+        <GlassCard className="p-6">
           <p className="text-rose-500 font-semibold mb-2">Failed to load models</p>
           <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">{error}</p>
           <button
@@ -150,15 +152,16 @@ export default function AIModelExplorerPage() {
       {/* Model cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filtered.map((model, i) => (
-          <a
+          <div
             key={model.id}
-            href={`https://huggingface.co/${model.id}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="animate-slide-up block"
+            role="link"
+            tabIndex={0}
+            onClick={() => openExternal(`https://huggingface.co/${model.id}`)}
+            onKeyDown={(e) => e.key === 'Enter' && openExternal(`https://huggingface.co/${model.id}`)}
+            className="animate-slide-up block cursor-pointer"
             style={{ animationDelay: `${i * 0.04}s`, animationFillMode: 'both' }}
           >
-            <GlassCard className="p-5 h-full hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" hover>
+            <GlassCard className="p-5 h-full" hover>
               <div className="flex items-start justify-between mb-2">
                 <span
                   className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${pipelineColors[model.pipeline_tag] || 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300'}`}
@@ -166,7 +169,7 @@ export default function AIModelExplorerPage() {
                   {model.pipeline_tag}
                 </span>
               </div>
-              <p className="font-semibold text-sm text-slate-900 dark:text-white mb-3 line-clamp-1 hover:text-primary transition-colors">
+              <p className="font-semibold text-sm text-slate-900 dark:text-white mb-3 line-clamp-1">
                 {model.id}
               </p>
               <div className="flex gap-4 text-xs text-slate-500 dark:text-slate-400">
@@ -184,7 +187,7 @@ export default function AIModelExplorerPage() {
                 </span>
               </div>
             </GlassCard>
-          </a>
+          </div>
         ))}
       </div>
     </CalculatorShell>

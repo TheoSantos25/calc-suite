@@ -237,26 +237,32 @@ export default function BaseConverterPage() {
             </button>
           </div>
         </div>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto rounded-xl">
           <table className="w-full text-sm">
             <thead>
-              <tr className="bg-slate-100 dark:bg-slate-700">
-                <th className="text-left p-3 font-medium text-slate-700 dark:text-slate-300">Decimal</th>
-                <th className="text-left p-3 font-medium text-slate-700 dark:text-slate-300">Binary</th>
-                <th className="text-left p-3 font-medium text-slate-700 dark:text-slate-300">Octal</th>
-                <th className="text-left p-3 font-medium text-slate-700 dark:text-slate-300">Hex</th>
+              <tr className="bg-slate-700 dark:bg-slate-900">
+                <th className="text-left p-3 font-semibold text-white">Decimal</th>
+                <th className="text-left p-3 font-semibold text-white">Binary</th>
+                <th className="text-left p-3 font-semibold text-white">Octal</th>
+                <th className="text-left p-3 font-semibold text-white">Hex</th>
               </tr>
             </thead>
             <tbody>
-              {tableRows.map((row) => (
+              {tableRows.map((row, i) => (
                 <tr
                   key={row.dec}
-                  className={`border-b border-slate-200 dark:border-slate-700 ${parsed === row.dec ? 'bg-amber-50 dark:bg-amber-900/20' : ''}`}
+                  className={`border-b border-slate-200 dark:border-slate-700/50 ${
+                    parsed === row.dec
+                      ? 'bg-amber-50 dark:bg-amber-900/20'
+                      : i % 2 === 0
+                        ? 'bg-slate-50 dark:bg-slate-800/50'
+                        : 'bg-white dark:bg-slate-800'
+                  }`}
                 >
-                  <td className="p-3 font-mono">{row.dec}</td>
-                  <td className="p-3 font-mono">{row.bin}</td>
-                  <td className="p-3 font-mono">{row.oct}</td>
-                  <td className="p-3 font-mono">{row.hex}</td>
+                  <td className="p-3 font-mono text-slate-900 dark:text-slate-200">{row.dec}</td>
+                  <td className="p-3 font-mono text-emerald-600 dark:text-emerald-400">{row.bin}</td>
+                  <td className="p-3 font-mono text-purple-600 dark:text-purple-400">{row.oct}</td>
+                  <td className="p-3 font-mono text-amber-600 dark:text-amber-400">{row.hex}</td>
                 </tr>
               ))}
             </tbody>

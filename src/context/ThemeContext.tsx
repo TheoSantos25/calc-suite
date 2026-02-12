@@ -1,4 +1,5 @@
 import { createContext, useCallback, useEffect, useState, type ReactNode } from 'react'
+import { updateStatusBarTheme } from '../capacitor-init'
 
 type Theme = 'light' | 'dark'
 
@@ -27,6 +28,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       root.classList.remove('dark')
     }
     localStorage.setItem('calc-suite-theme', theme)
+    updateStatusBarTheme(theme)
   }, [theme])
 
   const toggleTheme = useCallback(() => {

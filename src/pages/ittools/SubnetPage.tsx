@@ -192,30 +192,12 @@ export default function SubnetPage() {
           </ResultGrid>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <GlassCard className="p-4" hover>
-              <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">First Usable</p>
-              <p className="text-lg font-bold font-mono text-slate-900 dark:text-slate-100">{results.firstUsable}</p>
-            </GlassCard>
-            <GlassCard className="p-4" hover>
-              <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Last Usable</p>
-              <p className="text-lg font-bold font-mono text-slate-900 dark:text-slate-100">{results.lastUsable}</p>
-            </GlassCard>
-            <GlassCard className="p-4" hover>
-              <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">IP Class</p>
-              <p className="text-lg font-bold text-slate-900 dark:text-slate-100">Class {results.ipClass}</p>
-            </GlassCard>
-            <GlassCard className="p-4" hover>
-              <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Subnet Mask</p>
-              <p className="text-lg font-bold font-mono text-slate-900 dark:text-slate-100">{results.mask}</p>
-            </GlassCard>
-            <GlassCard className="p-4" hover>
-              <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Wildcard Mask</p>
-              <p className="text-lg font-bold font-mono text-slate-900 dark:text-slate-100">{results.wildcard}</p>
-            </GlassCard>
-            <GlassCard className="p-4" hover>
-              <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">CIDR Notation</p>
-              <p className="text-lg font-bold font-mono text-slate-900 dark:text-slate-100">{results.network}/{cidr}</p>
-            </GlassCard>
+            <ResultCard label="First Usable" value={results.firstUsable} color="text-cyan-500" />
+            <ResultCard label="Last Usable" value={results.lastUsable} color="text-purple-500" />
+            <ResultCard label="IP Class" value={`Class ${results.ipClass}`} color="text-amber-500" />
+            <ResultCard label="Subnet Mask" value={results.mask} color="text-blue-500" />
+            <ResultCard label="Wildcard Mask" value={results.wildcard} color="text-rose-500" />
+            <ResultCard label="CIDR Notation" value={`${results.network}/${cidr}`} color="text-indigo-500" />
           </div>
 
           {/* Binary visualization */}
@@ -240,29 +222,35 @@ export default function SubnetPage() {
         <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-4">
           Common Subnet Reference
         </h3>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+        <div className="overflow-x-auto -mx-6 px-6">
+          <table className="w-full text-sm border-separate border-spacing-0">
             <thead>
-              <tr className="bg-slate-100 dark:bg-slate-700">
-                <th className="text-left p-3 font-medium text-slate-700 dark:text-slate-300">CIDR</th>
-                <th className="text-left p-3 font-medium text-slate-700 dark:text-slate-300">Subnet Mask</th>
-                <th className="text-left p-3 font-medium text-slate-700 dark:text-slate-300">Wildcard</th>
-                <th className="text-right p-3 font-medium text-slate-700 dark:text-slate-300">Total</th>
-                <th className="text-right p-3 font-medium text-slate-700 dark:text-slate-300">Usable</th>
+              <tr>
+                <th className="text-left p-3 font-semibold text-white bg-slate-700 dark:bg-slate-600 first:rounded-tl-lg">CIDR</th>
+                <th className="text-left p-3 font-semibold text-white bg-slate-700 dark:bg-slate-600">Subnet Mask</th>
+                <th className="text-left p-3 font-semibold text-white bg-slate-700 dark:bg-slate-600">Wildcard</th>
+                <th className="text-right p-3 font-semibold text-white bg-slate-700 dark:bg-slate-600">Total</th>
+                <th className="text-right p-3 font-semibold text-white bg-slate-700 dark:bg-slate-600 last:rounded-tr-lg">Usable</th>
               </tr>
             </thead>
             <tbody>
-              {SUBNET_REF.map((row) => (
+              {SUBNET_REF.map((row, i) => (
                 <tr
                   key={row.cidr}
-                  className={`border-b border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors ${row.cidr === cidr ? 'bg-amber-50 dark:bg-amber-900/20' : ''}`}
+                  className={`cursor-pointer transition-colors ${
+                    row.cidr === cidr
+                      ? 'bg-primary/15 dark:bg-primary/25'
+                      : i % 2 === 0
+                        ? 'bg-white dark:bg-slate-800'
+                        : 'bg-slate-50 dark:bg-slate-800/60'
+                  } hover:bg-primary/10 dark:hover:bg-primary/20`}
                   onClick={() => setCidr(row.cidr)}
                 >
-                  <td className="p-3 font-mono">/{row.cidr}</td>
-                  <td className="p-3 font-mono">{row.mask}</td>
-                  <td className="p-3 font-mono">{row.wildcard}</td>
-                  <td className="p-3 text-right">{row.totalHosts.toLocaleString()}</td>
-                  <td className="p-3 text-right font-semibold">{row.usable.toLocaleString()}</td>
+                  <td className={`p-3 font-mono border-b border-slate-200 dark:border-slate-700 ${row.cidr === cidr ? 'text-primary font-bold' : 'text-slate-900 dark:text-slate-100'}`}>/{row.cidr}</td>
+                  <td className="p-3 font-mono text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-700">{row.mask}</td>
+                  <td className="p-3 font-mono text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-700">{row.wildcard}</td>
+                  <td className="p-3 text-right text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-700">{row.totalHosts.toLocaleString()}</td>
+                  <td className="p-3 text-right font-semibold text-slate-900 dark:text-slate-100 border-b border-slate-200 dark:border-slate-700">{row.usable.toLocaleString()}</td>
                 </tr>
               ))}
             </tbody>

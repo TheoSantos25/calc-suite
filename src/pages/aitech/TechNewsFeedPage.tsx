@@ -1,3 +1,4 @@
+import { useCapacitor } from '@/hooks/useCapacitor'
 import { CalculatorShell } from '@/components/ui/CalculatorShell'
 import { GlassCard } from '@/components/ui/GlassCard'
 import { SkeletonCard } from '@/components/ui/SkeletonCard'
@@ -5,6 +6,7 @@ import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
 import { useHackerNews, timeAgo, getDomain } from '@/hooks/aitech/useHackerNews'
 
 export default function TechNewsFeedPage() {
+  const { openExternal } = useCapacitor()
   const { stories, loading, error, refetch } = useHackerNews(20)
 
   if (loading) {
@@ -28,7 +30,7 @@ export default function TechNewsFeedPage() {
         title="Tech News Feed"
         description="Latest technology news from Hacker News"
       >
-        <GlassCard className="p-6 border-l-4 border-rose-500">
+        <GlassCard className="p-6">
           <p className="text-rose-500 font-semibold mb-2">Failed to load stories</p>
           <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">{error}</p>
           <button
@@ -49,24 +51,25 @@ export default function TechNewsFeedPage() {
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {stories.map((story, i) => (
-          <a
+          <div
             key={story.id}
-            href={story.url || `https://news.ycombinator.com/item?id=${story.id}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="animate-slide-up block"
+            role="link"
+            tabIndex={0}
+            onClick={() => openExternal(story.url || `https://news.ycombinator.com/item?id=${story.id}`)}
+            onKeyDown={(e) => e.key === 'Enter' && openExternal(story.url || `https://news.ycombinator.com/item?id=${story.id}`)}
+            className="animate-slide-up block cursor-pointer"
             style={{ animationDelay: `${i * 0.04}s`, animationFillMode: 'both' }}
           >
-            <GlassCard className="p-5 h-full hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300" hover>
+            <GlassCard className="p-5 h-full" hover>
               <div className="flex items-start gap-3">
                 <div className="flex-1 min-w-0">
                   {/* Source domain badge */}
-                  <span className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 mb-2">
+                  <span className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 mb-2">
                     {getDomain(story.url)}
                   </span>
 
                   {/* Title */}
-                  <h3 className="font-semibold text-sm text-slate-900 dark:text-white mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-semibold text-sm text-slate-900 dark:text-white mb-2 line-clamp-2">
                     {story.title}
                   </h3>
 
@@ -84,7 +87,7 @@ export default function TechNewsFeedPage() {
                 </div>
               </div>
             </GlassCard>
-          </a>
+          </div>
         ))}
       </div>
     </CalculatorShell>
