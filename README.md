@@ -32,7 +32,7 @@ Calc Suite is a multi-category web application built to centralize practical cal
 ## Local Development
 
 ```bash
-git clone https://github.com/TheoSantos25/calc-suite.git
+git clone https://github.com/CustomTeQ/calc-suite.git
 cd calc-suite
 npm install
 npm run dev
